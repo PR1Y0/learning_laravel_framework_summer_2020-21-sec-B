@@ -20,8 +20,22 @@ Route::get('/', function () {
 //uses is an associative array
 Route::get('/login', ['uses'=>'LoginController@index']);    
 Route::post('/login', 'LoginController@verify');
-
 Route::get('/home', 'HomeController@index');
+Route::get('/logout', 'LogoutController@index');
+Route::get('/user/list', 'UserController@index');
+
+Route::get('/user/details/{id}', 'UserController@details');
+
+Route::get('/user/create', 'UserController@create');
+Route::post('/user/create', 'UserController@insert');
+
+Route::get('/user/edit/{id}','UserController@edit');
+Route::post('/user/edit/{id}','UserController@update');
+
+Route::get('/user/delete/{id}','UserController@delete');
+Route::post('/user/delete/{id}','UserController@destroy');
+
+
 
 
 Route::get('/register', function(){

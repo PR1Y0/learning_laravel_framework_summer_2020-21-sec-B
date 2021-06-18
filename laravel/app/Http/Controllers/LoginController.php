@@ -12,6 +12,8 @@ class LoginController extends Controller
 
     public function verify(Request $req){                               //Request is a class
         
+        $req->session();
+
         if($req->uname == $req->password){
             return redirect('/home');
         }
