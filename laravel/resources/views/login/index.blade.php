@@ -6,6 +6,9 @@
 <body>
     
     <form method="post">
+    <!-- @csrf -->
+    {{csrf_field()}}
+    <!-- <input type="hidden" name=>"_token" value=>"{{csrf_token()}}"> -->
     <table>
         <tr>
             <td>Name</td>
@@ -22,6 +25,13 @@
         </tr>
     </table>
     </form>
-    <a href="/register">Signup</a>
+    @if(session('msg'))
+    <div class="alert alert-success">
+     {{session('msg')}}
+    </div>
+    @endif
+    
+    <a href="/register">Register</a>
+    
 </body>
 </html>

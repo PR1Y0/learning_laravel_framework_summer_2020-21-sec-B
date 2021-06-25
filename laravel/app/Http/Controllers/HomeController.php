@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(Request $req){
         //echo "Welcome to home";
         
                                 //(1) passing values from controller;
@@ -20,9 +20,15 @@ class HomeController extends Controller
         //         ->with('name', 'priyojit')           //(3)passing values through 'with' function
         //         ->with('id', '8456');                //works like function chainging;       
     
-        return view('home.index')
-                    ->withName('priyojit')           //(4)passing values through 'with' function in camelCase Order
-                    ->withId('8456');
+        // if($req->session()->has('uname')){
+            return view('home.index')
+                    ->withName('admin')               //(4)passing values through 'with' function in camelCase Order
+                    ->withId('03');
+        // }else{
+        //     $req->session()->flash('msg', 'invalid request');
+        //     return redirect('/login');
+        // }
+        
 
 
     }
