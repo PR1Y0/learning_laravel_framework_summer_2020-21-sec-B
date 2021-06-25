@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Illuminate\Validation\Rule;
+use Validator;
+use App\Http\Requests\UserRequest;
 
 class LoginController extends Controller
 {
@@ -10,7 +13,7 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function verify(Request $req){                               //Request is a class
+    public function verify(UserRequest $req){                               //Request is a class
         
         //SESSION SYNTAX:
         
@@ -41,9 +44,34 @@ class LoginController extends Controller
 
         // $req->session()->reflash();                                           //2 session are here and for each of them one time keep method will be called 
 
-        
+        // 1st validation apply:
 
-        if($req->uname == $req->password){
+        // $validation = Validator::make($req->all(), [
+        //     'uname' => 'required', 
+        //     'password' => 'required|min:5'
+        // ]);
+
+        // if($validation -> fails()){
+        //     return back()
+        //             ->with('errors', $validation->errors())
+        //             ->withInput();
+            // return redirect()->route('login.index')->with('errors', $validation->errors());  
+        //}
+
+        // 2nd validation apply:
+        // $this->validate($req,[
+        //         'uname' => 'required', 
+        //         'password' => 'required|min:5'
+        //     ])->validate();
+        
+        //3rd validation apply:
+            // $req->validate([
+            //     'uname' => 'required', 
+            //     'password' => 'required|min:5'
+            // ])->validate();
+
+        
+            if($req->uname == $req->password){
             
                 $req->session()->put('uname', $req->uname);                           //Here $req->uname is stored in session where index is uname         
                 return redirect('/home');
