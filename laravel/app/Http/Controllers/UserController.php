@@ -22,6 +22,8 @@ class UserController extends Controller
         return view('user.list')->with('userList', $users);     //value passing through 'with' function, 'userList' variable defined here
     }
 
+
+    //details
     public function details($id)
     {
         $users = $this->getUserList();
@@ -36,7 +38,10 @@ class UserController extends Controller
 
         return view('user.details')->with('user',$user);
     }
+    
 
+
+    //create
     public function create()
     {
         return view('user.create');
@@ -52,6 +57,9 @@ class UserController extends Controller
         return view('user.list')->with('userList', $users);
     }
 
+
+
+    //edit
     public function edit($id){
         //find user by id from user list
 
@@ -65,6 +73,8 @@ class UserController extends Controller
         return view('user.edit')->with('userList',$users);
     }
 
+
+    //delete
     public function delete($id){
         //confirm window
         //find user by id $user 
@@ -76,7 +86,8 @@ class UserController extends Controller
         //remove user from list
         //create new list $ display 
 
-        return view('user.list')->with('userList',$users);
+        // return view('user.list')->with('userList',$users);
+        return redirect()->route('user.index');
     }
 
 

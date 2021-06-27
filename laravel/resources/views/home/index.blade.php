@@ -7,9 +7,9 @@
     <title>Home Page</title>
 </head>
 <body>
-        <h1>Welcome Home, {{$name}} [{{$id}}] </h1>
+        <h1>Welcome Home, {{session('uname')}} [{{$id}}] </h1>
         <a href="/user/create">Create New </a>|                                      
-        <a href="/user/list">User List </a>| 
+        <a href="{{route('user.index')}}">User List </a>| 
         <a href="/logout">Logout </a>
 </body>
 </html>
